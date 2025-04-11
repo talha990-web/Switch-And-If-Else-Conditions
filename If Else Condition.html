@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time and Greeting Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            animation: gradientBackground 10s infinite alternate;
+        }
+        @keyframes gradientBackground {
+            0% {
+                background: linear-gradient(45deg, #f4a261, #2a9d8f);
+            }
+            50% {
+                background: linear-gradient(45deg, #264653, #e9c46a);
+            }
+            100% {
+                background: linear-gradient(45deg, #f4a261, #e76f51);
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .greeting {
+            font-size: 1.2em;
+            margin-top: 20px;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInScale 3s forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .fajar {
+            color: #f4a261; 
+        }
+
+        .ishrak {
+            color: #2a9d8f; 
+        }
+
+        .zohar {
+            color: #e9c46a; 
+        }
+
+        .asar {
+            color: #264653; 
+        }
+
+        .magrib {
+            color: #e76f51; 
+        }
+
+        .isha {
+            color: #264653;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Time And Greeting Program</h1>
+        <div id="greeting" class="greeting"></div>
+    </div>
+
+    <script>
+        function greets(time) {
+            var greeting = "";
+            var greetingClass = "";
+
+            if (isNaN(time) || time < 1 || time > 24) {
+                greeting = "Invalid input. Please enter a number between 1 and 24.";
+                document.getElementById('greeting').classList.add('error');
+                return greeting;
+            }
+
+            if (time >= 5 && time <= 6) {
+                greeting = "This is Fajar Prayer Time";
+                greetingClass = "fajar";
+            } else if (time >= 7 && time <= 11) {
+                greeting = "This is Ishrak, Shashat And Zawal Prayer Time";
+                greetingClass = "ishrak";
+            } else if (time >= 12 && time <= 15) {
+                greeting = "This is Zohar Prayer Time";
+                greetingClass = "zohar";
+            } else if (time >= 16 && time <= 17) {
+                greeting = "This is Asar Prayer Time";
+                greetingClass = "asar";
+            } else if (time >= 18 && time <= 20) {
+                greeting = "This is Maghrib Prayer Time";
+                greetingClass = "magrib";
+            } else if (time >= 21 && time <= 24) {
+                greeting = "This is Isha Prayer Time";
+                greetingClass = "isha";
+            } else if (time >= 1 && time <= 4) {
+                greeting = "This is Tahajjud Prayer Time";
+                greetingClass = "isha";
+            }
+
+            document.getElementById('greeting').classList.add(greetingClass);
+            return greeting;
+        }
+
+        var input = prompt("Enter the time of prayer (1-24):");
+        var time = parseInt(input);  
+        var greetingMessage = greets(time);
+
+        document.getElementById('greeting').innerText = greetingMessage;
+    </script>
+
+</body>
+</html>

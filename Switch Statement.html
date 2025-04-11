@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fruit Info Checker</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      animation: backgroundFade 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes backgroundFade {
+      from {
+        background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+      }
+      to {
+        background: linear-gradient(to right, #fce4ec, #e1f5fe);
+      }
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      color: #00796b;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    select {
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 2px solid #00796b;
+      background-color: #ffffff;
+      color: #333;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    select:hover {
+      background-color: #e0f2f1;
+    }
+
+    button {
+      padding: 10px 25px;
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+      background-color: #00796b;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #004d40;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    #result {
+      margin-top: 25px;
+      font-size: 22px;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background-color: #e0f7fa;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🍉 Fruit Info Checker</h2>
+    <select id="mySelect">
+      <option value="">- - Choose a fruit - -</option>
+      <option value="apple">Apple</option>
+      <option value="banana">Banana</option>
+      <option value="orange">Orange</option>
+      <option value="grape">Grape</option>
+      <option value="mango">Mango</option>
+    </select>
+    <button onclick="myFruits()" type="submit">Check</button>
+    <p id="result"></p>
+    <footer>&copy; 2025 | Fruit Info Inc.</footer>
+  </div>
+
+  <script>
+    function myFruits() {
+      const fruits = document.getElementById("mySelect").value;
+      const result = document.getElementById("result");
+      let message = "";
+
+      switch (fruits) {
+        case "apple":
+          message = "🍎 Apple is a sweet and tart fruit.";
+          break;
+        case "banana":
+          message = "🍌 Banana is a yellow fruit.";
+          break;
+        case "orange":
+          message = "🍊 Orange is a sweet and sour fruit.";
+          break;
+        case "grape":
+          message = "🍇 Grape is a juicy and sour fruit.";
+          break;
+        case "mango":
+          message = "🥭 Mango is the king of fruits!";
+          break;
+        default:
+          message = "⚠️ Please select a valid fruit.";
+      }
+
+      result.textContent = message;
+    }
+  </script>
+
+</body>
+</html>
